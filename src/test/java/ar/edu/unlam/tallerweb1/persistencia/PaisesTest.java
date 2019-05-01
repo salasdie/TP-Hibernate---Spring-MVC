@@ -134,13 +134,13 @@ public class PaisesTest extends SpringTest {
 
         List<Pais> Paises = session.createCriteria(Pais.class).list();
         
-        List<Ciudad> ciudadesNorteCancer = session.createCriteria(Ciudad.class)
-        		.createAlias("ubicacionGeografica", "ubicacion")
-        		.add(Restrictions.gt("ubicacion.latitud", new Double(23.43722))).list();
-        
         List<Pais> paisesConCapitalNorteCancer = new ArrayList<Pais>();
         for (Pais pais : Paises) {
-        	if (session.createCriteria(Ciudad.class).createAlias("ubicacionGeografica", "ubicacion").add(Restrictions.eq("nombre", pais.getCapital())).add(Restrictions.gt("ubicacion.latitud", new Double(0))).uniqueResult() != null) {
+        	if (session.createCriteria(Ciudad.class).createAlias("ubicacionGeografica", "ubicacion")
+        			.add(Restrictions.eq("nombre", pais.getCapital()))
+        			.add(Restrictions.gt("ubicacion.latitud", new Double(23.43722)))
+        			.uniqueResult() != null) {
+        		
         		paisesConCapitalNorteCancer.add(pais);
         	}
 		}
