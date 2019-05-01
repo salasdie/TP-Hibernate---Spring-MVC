@@ -12,7 +12,6 @@ public class Pais {
     private String idioma;
     private String capital;
     @ManyToOne
-
     private Continente continente;
 
     public Pais(String nombre, Integer habitantes, String idioma, String capital, Continente continente) {

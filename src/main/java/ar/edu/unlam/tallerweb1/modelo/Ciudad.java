@@ -7,12 +7,19 @@ public class Ciudad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nombre;
     @OneToOne
     private Ubicacion ubicacionGeografica;
     @ManyToOne
     private Pais pais;
 
-    public Long getId() {
+	public Ciudad(String nombre, Ubicacion ubicacionGeografica, Pais pais) {
+		this.nombre = nombre;
+		this.ubicacionGeografica = ubicacionGeografica;
+		this.pais = pais;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -35,4 +42,12 @@ public class Ciudad {
     public void setPais(Pais pais) {
         this.pais = pais;
     }
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }
