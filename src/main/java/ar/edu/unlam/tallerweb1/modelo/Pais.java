@@ -8,29 +8,68 @@ public class Pais {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private Long habitantes;
+    private Integer habitantes;
     private String idioma;
     private String capital;
     @ManyToOne
+
     private Continente continente;
 
-    public Long getId() { return id; }
-    public void setId( Long id){this.id=id; }
+    public Pais(String nombre, Integer habitantes, String idioma, String capital, Continente continente) {
+        this.nombre = nombre;
+        this.habitantes = habitantes;
+        this.idioma = idioma;
+        this.capital = capital;
+        this.continente = continente;
+    }
 
-    public String getNombre() {return nombre; }
-    public void setNombre( String nombre){ this.nombre= nombre; }
+    public Long getId() {
+        return id;
+    }
 
-    public Long getHabitantes() { return habitantes; }
-    public void setHabitantes(Long habitantes) { this.habitantes = habitantes; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getIdioma() { return idioma; }
-    public void setIdioma(String idioma) { this.idioma = idioma; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public String getCapital() { return capital; }
-    public void setCapital(String capital) { this.capital = capital; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public Continente getContinente(){ return continente; }
-    public void setContinente(Continente continente) { this.continente = continente; }
+    public Integer getHabitantes() {
+        return habitantes;
+    }
+
+    public void setHabitantes(Integer habitantes) {
+        this.habitantes = habitantes;
+    }
+
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public void setCapital(String capital) {
+        this.capital = capital;
+    }
+
+    public Continente getContinente() {
+        return continente;
+    }
+
+    public void setContinente(Continente continente) {
+        this.continente = continente;
+    }
 
 
 }

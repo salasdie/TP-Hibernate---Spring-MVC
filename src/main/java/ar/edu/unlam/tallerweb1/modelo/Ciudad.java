@@ -12,13 +12,27 @@ public class Ciudad {
     @ManyToOne
     private Pais pais;
 
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Ubicacion getUbicacionGeografica() { return ubicacionGeografica; }
-    public void setUbicacionGeografica(Ubicacion ubicacionGeografica) { this.ubicacionGeografica = ubicacionGeografica; }
+    public Ubicacion getUbicacionGeografica() {
+        return ubicacionGeografica;
+    }
 
-    public Pais getPais() { return pais; }
-    public void setPais(Pais pais) { this.pais = pais; }
+    public void setUbicacionGeografica(Ubicacion ubicacionGeografica) {
+        this.ubicacionGeografica = ubicacionGeografica;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
+    }
 }

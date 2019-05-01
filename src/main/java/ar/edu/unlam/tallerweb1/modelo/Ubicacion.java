@@ -8,18 +8,34 @@ import javax.persistence.Id;
 @Entity
 public class Ubicacion {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Float latitud;
     private Float longitud;
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public Float getLatitud() { return latitud; }
-    public void setLatitud(Float latitud) { this.latitud = latitud; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Float getLongitud() { return longitud; }
+    public Float getLatitud() {
+        return latitud;
+    }
 
-    public void setLongitud(Float longitud) { this.longitud = longitud; }
+    public void setLatitud(Float latitud) {
+        this.latitud = latitud;
+    }
+
+    public Float getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(Float longitud) {
+        this.longitud = longitud;
+    }
+
+
 }
