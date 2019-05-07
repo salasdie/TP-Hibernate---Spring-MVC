@@ -4,7 +4,7 @@ import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.modelo.Ciudad;
 import ar.edu.unlam.tallerweb1.modelo.Continente;
 import ar.edu.unlam.tallerweb1.modelo.Pais;
-import ar.edu.unlam.tallerweb1.modelo.Ubicacion;
+import ar.edu.unlam.tallerweb1.modelo.Ubicacion; 
 
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
@@ -85,7 +85,7 @@ public class PaisesTest extends SpringTest {
 
     }
     
-    //4- Hacer con junit un test que busque todos los países cuya capital están al norte del trópico de cáncer.
+    //4- Hacer con junit un test que busque todos los paï¿½ses cuya capital estï¿½n al norte del trï¿½pico de cï¿½ncer.
     @Test
     @Transactional
     @Rollback(true)
