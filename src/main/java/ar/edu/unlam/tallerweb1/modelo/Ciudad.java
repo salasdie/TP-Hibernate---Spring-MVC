@@ -10,13 +10,12 @@ public class Ciudad {
     private String nombre;
     @OneToOne
     private Ubicacion ubicacionGeografica;
-    @ManyToOne
+    @OneToOne
     private Pais pais;
 
-	public Ciudad(String nombre, Ubicacion ubicacionGeografica, Pais pais) {
+	public Ciudad(String nombre, Ubicacion ubicacionGeografica) {
 		this.nombre = nombre;
 		this.ubicacionGeografica = ubicacionGeografica;
-		this.pais = pais;
 	}
 
 	public Long getId() {

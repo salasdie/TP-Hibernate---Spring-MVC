@@ -35,11 +35,31 @@ public class PaisesTest extends SpringTest {
 
         session.save(oceania);
         session.save(america);        
+        
+        Ubicacion ubicacionBuenosAires = new Ubicacion(-34.6157437,-58.5733857);
+        Ubicacion ubicacionBrasilia = new Ubicacion(-15.7750836, -48.0772954);
+        Ubicacion ubicacionWashington = new Ubicacion(38.8935128, -77.1546626);
+        Ubicacion ubicacionCanberra = new Ubicacion(-35.2813043, 149.1204446);
+        
+        session.save(ubicacionBuenosAires);
+        session.save(ubicacionBrasilia);
+        session.save(ubicacionWashington);
+        session.save(ubicacionCanberra);
+        
+        Ciudad buenosAires = new Ciudad("Buenos Aires", ubicacionBuenosAires);
+        Ciudad brasilia = new Ciudad("Brasilia", ubicacionBrasilia);
+        Ciudad washington = new Ciudad("Washington", ubicacionWashington);
+        Ciudad canberra = new Ciudad("Canberra", ubicacionCanberra);
+        
+        session.save(buenosAires);
+        session.save(brasilia);
+        session.save(washington);
+        session.save(canberra);
 
-        Pais argentina = new Pais("Argentina", 50000000, "Castellano", "buenos aires", america);
-        Pais brasil = new Pais("Brasil", 50000000, "Portugues", "brasilia", america);
-        Pais estadosUnidos = new Pais("Estados Unidos", 50000000, "Ingles", "washington", america);
-        Pais australia = new Pais("Australia", 50000000, "Ingles", "canberra", oceania);
+        Pais argentina = new Pais("Argentina", 50000000, "Castellano", buenosAires, america);
+        Pais brasil = new Pais("Brasil", 50000000, "Portugues", brasilia, america);
+        Pais estadosUnidos = new Pais("Estados Unidos", 50000000, "Ingles", washington, america);
+        Pais australia = new Pais("Australia", 50000000, "Ingles", canberra, oceania);
 
         session.save(argentina);
         session.save(brasil);
@@ -67,10 +87,26 @@ public class PaisesTest extends SpringTest {
 
         session.save(europa);
         session.save(america);
+        
+        Ubicacion ubicacionBuenosAires = new Ubicacion(-34.6157437,-58.5733857);
+        Ubicacion ubicacionBrasilia = new Ubicacion(-15.7750836, -48.0772954);
+        Ubicacion ubicacionRoma = new Ubicacion(38.8935128, -77.1546626);
+        
+        session.save(ubicacionBuenosAires);
+        session.save(ubicacionBrasilia);
+        session.save(ubicacionRoma);
+        
+        Ciudad buenosAires = new Ciudad("Buenos Aires", ubicacionBuenosAires);
+        Ciudad brasilia = new Ciudad("Brasilia", ubicacionBrasilia);
+        Ciudad roma = new Ciudad("Roma", ubicacionRoma);
+        
+        session.save(buenosAires);
+        session.save(brasilia);
+        session.save(roma);
 
-        Pais italia = new Pais("Italia", 50000000, "Italiano", "Roma", europa);
-        Pais argentina = new Pais("argentina", 50000000, "Castellano", "Buenos Aires", america);
-        Pais brasil = new Pais("brasil", 50000000, "Portugues", "Brasilia", america);
+        Pais italia = new Pais("Italia", 50000000, "Italiano", roma, europa);
+        Pais argentina = new Pais("argentina", 50000000, "Castellano", buenosAires, america);
+        Pais brasil = new Pais("brasil", 50000000, "Portugues", brasilia, america);
 
         session.save(italia);
         session.save(argentina);
@@ -99,17 +135,7 @@ public class PaisesTest extends SpringTest {
         america.setNombre("America");
 
         session.save(oceania);
-        session.save(america);        
-
-        Pais argentina = new Pais("Argentina", 50000000, "Castellano", "buenos aires", america);
-        Pais brasil = new Pais("Brasil", 50000000, "Portugues", "brasilia", america);
-        Pais estadosUnidos = new Pais("Estados Unidos", 50000000, "Ingles", "washington", america);
-        Pais australia = new Pais("Australia", 50000000, "Ingles", "canberra", oceania);
-        
-        session.save(argentina);
-        session.save(brasil);
-        session.save(estadosUnidos);
-        session.save(australia);
+        session.save(america);    
         
         Ubicacion ubicacionBuenosAires = new Ubicacion(-34.6157437,-58.5733857);
         Ubicacion ubicacionBrasilia = new Ubicacion(-15.7750836, -48.0772954);
@@ -121,30 +147,32 @@ public class PaisesTest extends SpringTest {
         session.save(ubicacionWashington);
         session.save(ubicacionCanberra);
         
-        Ciudad buenosAires = new Ciudad("buenos aires", ubicacionBuenosAires, argentina);
-        Ciudad brasilia = new Ciudad("brasilia", ubicacionBrasilia, brasil);
-        Ciudad washington = new Ciudad("washington", ubicacionWashington, estadosUnidos);
-        Ciudad canberra = new Ciudad("canberra", ubicacionCanberra, australia);
+        Ciudad buenosAires = new Ciudad("buenos aires", ubicacionBuenosAires);
+        Ciudad brasilia = new Ciudad("brasilia", ubicacionBrasilia);
+        Ciudad washington = new Ciudad("washington", ubicacionWashington);
+        Ciudad canberra = new Ciudad("canberra", ubicacionCanberra);
         
         session.save(buenosAires);
         session.save(brasilia);
         session.save(washington);
         session.save(canberra);
 
-
-        List<Pais> Paises = session.createCriteria(Pais.class).list();
+        Pais argentina = new Pais("Argentina", 50000000, "Castellano", buenosAires, america);
+        Pais brasil = new Pais("Brasil", 50000000, "Portugues", brasilia, america);
+        Pais estadosUnidos = new Pais("Estados Unidos", 50000000, "Ingles", washington, america);
+        Pais australia = new Pais("Australia", 50000000, "Ingles", canberra, oceania);
         
-        List<Pais> paisesConCapitalNorteCancer = new ArrayList<Pais>();
-        for (Pais pais : Paises) {
-        	if (session.createCriteria(Ciudad.class).createAlias("ubicacionGeografica", "ubicacion")
-        			.add(Restrictions.eq("nombre", pais.getCapital()))
-        			.add(Restrictions.gt("ubicacion.latitud", new Double(23.43722)))
-        			.uniqueResult() != null) {
-        		
-        		paisesConCapitalNorteCancer.add(pais);
-        	}
-		}
-        assertThat(paisesConCapitalNorteCancer.size()).isEqualTo(1);
+        session.save(argentina);
+        session.save(brasil);
+        session.save(estadosUnidos);
+        session.save(australia);
+
+
+        List<Pais> getPaisesCapitalNorteCancer = session.createCriteria(Pais.class)
+        		.createAlias("capital.ubicacionGeografica", "ubicacion")
+        		.add(Restrictions.gt("ubicacion.latitud", new Double(23.43722))).list();
+        
+        assertThat(getPaisesCapitalNorteCancer.size()).isEqualTo(1);
     }
     
     //5- Hacer con junit un test que busque todas las ciudades del hemisferio sur
@@ -154,23 +182,6 @@ public class PaisesTest extends SpringTest {
     public void ciudadesHemisferioSur() {
         Session session = getSession();
         
-        Continente oceania = new Continente();
-        Continente america = new Continente();
-
-        oceania.setNombre("Oceania");
-        america.setNombre("America");
-        session.save(oceania);
-        session.save(america);        
-
-        Pais argentina = new Pais("Argentina", 50000000, "Castellano", "buenos aires", america);
-        Pais brasil = new Pais("Brasil", 50000000, "Portugues", "brasilia", america);
-        Pais estadosUnidos = new Pais("Estados Unidos", 50000000, "Ingles", "washington", america);
-        Pais australia = new Pais("Australia", 50000000, "Ingles", "canberra", oceania);        
-        session.save(argentina);
-        session.save(brasil);
-        session.save(estadosUnidos);
-        session.save(australia);
-        
         Ubicacion ubicacionBuenosAires = new Ubicacion(-34.6157437,-58.5733857);
         Ubicacion ubicacionBrasilia = new Ubicacion(-15.7750836, -48.0772954);
         Ubicacion ubicacionWashington = new Ubicacion(38.8935128, -77.1546626);
@@ -180,15 +191,14 @@ public class PaisesTest extends SpringTest {
         session.save(ubicacionWashington);
         session.save(ubicacionCanberra);
         
-        Ciudad buenosAires = new Ciudad("buenos aires", ubicacionBuenosAires, argentina);
-        Ciudad brasilia = new Ciudad("brasilia", ubicacionBrasilia, brasil);
-        Ciudad washington = new Ciudad("washington", ubicacionWashington, estadosUnidos);
-        Ciudad canberra = new Ciudad("canberra", ubicacionCanberra, australia);        
+        Ciudad buenosAires = new Ciudad("buenos aires", ubicacionBuenosAires);
+        Ciudad brasilia = new Ciudad("brasilia", ubicacionBrasilia);
+        Ciudad washington = new Ciudad("washington", ubicacionWashington);
+        Ciudad canberra = new Ciudad("canberra", ubicacionCanberra);        
         session.save(buenosAires);
         session.save(brasilia);
         session.save(washington);
         session.save(canberra);
-
 
         List<Ciudad> ciudadesHemisferioSur = session.createCriteria(Ciudad.class)
         		.createAlias("ubicacionGeografica", "ubicacion")

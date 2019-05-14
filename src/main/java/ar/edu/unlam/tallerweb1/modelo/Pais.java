@@ -10,11 +10,12 @@ public class Pais {
     private String nombre;
     private Integer habitantes;
     private String idioma;
-    private String capital;
+    @OneToOne
+    private Ciudad capital;
     @ManyToOne
     private Continente continente;
 
-    public Pais(String nombre, Integer habitantes, String idioma, String capital, Continente continente) {
+    public Pais(String nombre, Integer habitantes, String idioma, Ciudad capital, Continente continente) {
         this.nombre = nombre;
         this.habitantes = habitantes;
         this.idioma = idioma;
@@ -54,11 +55,11 @@ public class Pais {
         this.idioma = idioma;
     }
 
-    public String getCapital() {
+    public Ciudad getCapital() {
         return capital;
     }
 
-    public void setCapital(String capital) {
+    public void setCapital(Ciudad capital) {
         this.capital = capital;
     }
 
