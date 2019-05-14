@@ -15,12 +15,7 @@
 	</head>
 	<body>
 		<div class = "container">
-			<h1>El resultado de su operacion es:</h1>
-			<% if ("cantidadDeCaracteres".equals(request.getParameter("operacion"))) { %>
-        		<h4>El resultado de ${operacion} sobre ${cadena} es ${resultado}, donde ${resultado} es la cantidad de caracteres de la cadena recibida por parametro</h4>
-    		<% } else { %>
         		<h4>El resultado de ${operacion} sobre ${cadena} es ${resultado}, donde ${resultado} es la cadena resultante de aplicar la operacion a la cadena recibida por parametro</h4>
-    		<% } %>
 		</div>
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>

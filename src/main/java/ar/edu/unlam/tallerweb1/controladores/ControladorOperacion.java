@@ -7,8 +7,10 @@ import org.aspectj.weaver.ast.Var;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
@@ -17,17 +19,12 @@ import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 @Controller
 public class ControladorOperacion {
 
-	@RequestMapping("/operaciones")
-	public ModelAndView irAOperaciones() {
-		return new ModelAndView("operaciones");
-	}
-	
-	@RequestMapping(path = "/operacion-validar")
-	public ModelAndView operacionValidar(HttpServletRequest request) {
+	@RequestMapping(path = "/operaciones/{operacion}/")
+	public ModelAndView operacionValidar(@PathVariable("operacion") String operacion,
+			@RequestParam(value = "cadena", required = true) String cadena) {
+		
 		ModelMap model = new ModelMap();
 		
-		String cadena = request.getParameter("cadena");
-		String operacion = request.getParameter("operacion");
 		String resultado = new String();
 		
 		if (operacion.equals("pasarAMayuscula")) {
@@ -38,7 +35,7 @@ public class ControladorOperacion {
 			resultado = new StringBuilder(cadena).reverse().toString();
 		} else if (operacion.equals("cantidadDeCaracteres")) {
 			resultado = Integer.toString(cadena.length());
-		}
+		} 
 		
 		model.put("cadena", cadena);
 		model.put("resultado", resultado);
